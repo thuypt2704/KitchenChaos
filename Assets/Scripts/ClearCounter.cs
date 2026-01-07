@@ -2,14 +2,12 @@ using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 
-public class ClearCounter : MonoBehaviour
+public class ClearCounter : BaseCounter
 {
-    [SerializeField] private Transform tomatoPrefab;
-    [SerializeField] private Transform counterTopPoint;
-    public void Interact()
+    [SerializeField] private KitchenObjectSO kitchenObjectSO;
+
+
+    public override void Interact(Player player)
     {
-        Debug.Log("Interact!");
-        Transform tomatoTransform = Instantiate(tomatoPrefab, counterTopPoint);
-        tomatoTransform.localPosition = Vector3.zero;
     }
 }
