@@ -11,7 +11,7 @@ public class DeliveryManagerSingleUI : MonoBehaviour
     [SerializeField] private Transform iconTemplate;
 
 
-    private void Awake() 
+    private void Awake()  
     {
         iconTemplate.gameObject.SetActive(false);
     }
