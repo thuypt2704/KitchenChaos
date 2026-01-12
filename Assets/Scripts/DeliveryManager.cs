@@ -75,7 +75,7 @@ public class DeliveryManager : MonoBehaviour
                         plateContentsMatchesRecipe = false;
                     }
                 }
-                if (!plateContentsMatchesRecipe)
+                if (plateContentsMatchesRecipe)
                 {
                     //Player delivered the correct recipe.
                     successfulRecipesAmount++;

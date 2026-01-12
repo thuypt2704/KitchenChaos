@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 using System;
@@ -31,12 +31,37 @@ public class GameInput : MonoBehaviour
     private PlayerInputActions playerInputActions;
     private void Awake()
     {
+        //Instance = this;
+        //playerInputActions = new PlayerInputActions();
+
+        //if (PlayerPrefs.HasKey(PLAYER_PREFS_BINDINGS))
+        //{
+        //    playerInputActions.LoadBindingOverridesFromJson(PlayerPrefs.GetString(PLAYER_PREFS_BINDINGS));
+        //}
+
+        //playerInputActions.Player.Enable();
+
+        //playerInputActions.Player.Interact.performed += Interact_performed;
+        //playerInputActions.Player.InteractAlternate.performed += InteractAlternate_performed;
+        //playerInputActions.Player.Pause.performed += Pause_performed;
+        //Code cũ
+
+        if (Instance != null)
+        {
+            Destroy(gameObject);
+            return;
+        }
+
         Instance = this;
+        DontDestroyOnLoad(gameObject);
+
         playerInputActions = new PlayerInputActions();
 
         if (PlayerPrefs.HasKey(PLAYER_PREFS_BINDINGS))
         {
-            playerInputActions.LoadBindingOverridesFromJson(PlayerPrefs.GetString(PLAYER_PREFS_BINDINGS));
+            playerInputActions.LoadBindingOverridesFromJson(
+                PlayerPrefs.GetString(PLAYER_PREFS_BINDINGS)
+            );
         }
 
         playerInputActions.Player.Enable();
@@ -48,6 +73,15 @@ public class GameInput : MonoBehaviour
 
     private void OnDestroy()
     {
+        //playerInputActions.Player.Interact.performed -= Interact_performed;
+        //playerInputActions.Player.InteractAlternate.performed -= InteractAlternate_performed;
+        //playerInputActions.Player.Pause.performed -= Pause_performed;
+
+        //playerInputActions.Dispose();
+
+
+        if (playerInputActions == null) return;
+
         playerInputActions.Player.Interact.performed -= Interact_performed;
         playerInputActions.Player.InteractAlternate.performed -= InteractAlternate_performed;
         playerInputActions.Player.Pause.performed -= Pause_performed;
@@ -72,11 +106,20 @@ public class GameInput : MonoBehaviour
 
     public Vector2 GetMovementVectorNormalized()
     {
+        //Vector2 inputVector = playerInputActions.Player.Move.ReadValue<Vector2>();
+
+        //inputVector = inputVector.normalized;
+
+        //return inputVector;
+
+
+        if (playerInputActions == null || !playerInputActions.Player.enabled)
+        {
+            return Vector2.zero;
+        }
+
         Vector2 inputVector = playerInputActions.Player.Move.ReadValue<Vector2>();
-
-        inputVector = inputVector.normalized;
-
-        return inputVector;
+        return inputVector.normalized;
     }
 
     public string GetBindingText(Binding binding)

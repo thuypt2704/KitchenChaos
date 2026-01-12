@@ -1,12 +1,12 @@
-using UnityEngine;
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine.Rendering;
-using Unity.VisualScripting;
+using UnityEngine;
 
-public class Player : MonoBehaviour, IKitchenObjectPlayer
+public class Player : MonoBehaviour, IKitchenObjectParent
 {
+
+
     public static Player Instance { get; private set; }
 
 
@@ -20,7 +20,7 @@ public class Player : MonoBehaviour, IKitchenObjectPlayer
 
 
     [SerializeField] private float moveSpeed = 7f;
-    [SerializeField] private GameInput gameInput;
+    [SerializeField] public GameInput gameInput;
     [SerializeField] private LayerMask countersLayerMask;
     [SerializeField] private Transform kitchenObjectHoldPoint;
 
@@ -205,4 +205,5 @@ public class Player : MonoBehaviour, IKitchenObjectPlayer
     {
         return kitchenObject != null;
     }
+
 }

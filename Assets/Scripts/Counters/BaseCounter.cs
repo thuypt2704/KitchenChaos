@@ -3,7 +3,7 @@ using UnityEngine.EventSystems;
 using System;
 using UnityEngine.Rendering;
 
-public class BaseCounter : MonoBehaviour, IKitchenObjectPlayer
+public class BaseCounter : MonoBehaviour, IKitchenObjectParent
 {
 
     public static event EventHandler OnAnyObjectPlacedHere;

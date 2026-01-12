@@ -343,7 +343,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   plateKitchenObject: {fileID: -213744078164263343}
-  iconTemplate: {fileID: 0}
+  iconTemplate: {fileID: 6270849443503309616}
 --- !u!114 &8196084901328587630
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -520,6 +520,10 @@ PrefabInstance:
       propertyPath: kitchenObjectSOGameObjectList.Array.data[5].kitchenObjectSO
       value: 
       objectReference: {fileID: 11400000, guid: 74f1545aa1e1b3c4f973926f48286382, type: 2}
+    - target: {fileID: 3344737378473704206, guid: 10e39c981f2de6441b54efde32ced8f0, type: 3}
+      propertyPath: m_CastShadows
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
